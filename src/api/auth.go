@@ -8,8 +8,6 @@ import (
 	"time"
 )
 
-var pfsAddr string
-
 type session struct {
 	name   string
 	addr   string
@@ -42,7 +40,7 @@ func (ss *sessions) Login(w http.ResponseWriter, r *http.Request) (err error) {
 		panic(fmt.Errorf("权限验证失败: 用户名或密码错误"))
 	}
 
-	sid := UUID(16)
+	sid := uuid(16)
 	s := &session{
 		name:   user,
 		addr:   ip(r),
@@ -89,6 +87,7 @@ func (ss *sessions) CleanUp() {
 	}
 }
 
+// SS sessions manager
 var SS sessions
 
 func init() {

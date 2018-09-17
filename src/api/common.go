@@ -8,7 +8,7 @@ func assert(err error) {
 	}
 }
 
-func UUID(L int) string {
+func uuid(L int) string {
 	const charMap = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	buf := make([]byte, L)
 	_, err := rand.Read(buf)
